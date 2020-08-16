@@ -10,7 +10,13 @@ class CreateUserView(generics.CreateAPIView):
 class CreateTokenView(ObtainAuthToken):
     """Create a new auth token for user"""
     serializer_class=AuthTokenSerializer
-    renderer_classes=api_settings.DEFAULT_RENDERER_CLASSES
+    renderer_classes=api_settings.DEFAULT_RENDERER_CLASSES # Restframework의 default renderer classes 세팅을 이용하여 render한다.
+
+# Before a TemplateResponse instance can be returned to the client, it must be rendered.
+# The rendering process takes the intermediate representation of template and context,
+# and turns it into the final byte stream that can be served to the client.
+
+# 출처 : https://www.django-rest-framework.org/api-guide/renderers/
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
     """Manage the authenticated user"""

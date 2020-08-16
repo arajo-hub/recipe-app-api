@@ -6,6 +6,20 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import Tag, Ingredient, Recipe
 from recipe import serializers
 
+# Django REST framework allows you to combine the logic for a set of related views in a single class, called a ViewSet.
+# In other frameworks you may also find conceptually similar implementations named something like 'Resources' or 'Controllers'.
+
+# 출처 : https://www.django-rest-framework.org/api-guide/viewsets/
+
+# Rest framework는 Viewset이라는 추상클래스를 제공한다.
+# 이를 통해 개발자는 API의 상호작용이나 상태별 모델링에 집중할 수 있고,
+# URL구조는 기본 관례에 따라 자동으로 설정된다.
+
+# Viewset클래스는 View클래스와 거의 비슷하지만
+# get과 put메서드는 지원하지 않고 read와 update메서드를 지원한다.
+
+# 출처 : http://raccoonyy.github.io/drf3-tutorial-6/
+
 class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
                             mixins.ListModelMixin,
                             mixins.CreateModelMixin):
@@ -32,7 +46,6 @@ class TagViewSet(BaseRecipeAttrViewSet):
     """Manage tags in the database"""
     queryset=Tag.objects.all()
     serializer_class=serializers.TagSerializer
-
 
 class IngredientViewSet(BaseRecipeAttrViewSet):
     """Manage ingredients in the database"""
