@@ -14,6 +14,6 @@ POST /api/user/create
 	* FAIL
 
 |종류|코드|메세지|
-|:--:|:--:|:----|
+|:--:|:--:|:---:|
 |email에 @ 혹은 '.'이 포함되어 있지 않음|400|"Enter a valid email address."|
 |password가 5글자 미만으로 입력됨|400|"Ensure this field has at least 5 characters."|
