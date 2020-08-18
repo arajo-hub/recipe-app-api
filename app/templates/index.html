@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <span id='test'>fail!</span><span>는</span>
+    <span id='test2'>fail!</span><span>로 만듭니다.</span>
+  </body>
+  <script>
+    $.ajax({
+      type:"GET",
+      url:"http://127.0.0.1:8000/api/recipe/recipes/1/",
+      success: function(data){
+        console.log(data)
+        $('#test').text(data.title);
+        $('#test2').text(data.ingredients[0].name)
+      }
+    })
+  </script>
+</html>
